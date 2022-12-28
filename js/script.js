@@ -36,8 +36,8 @@ const titleClickHandler = function(event){
   console.log(targetArticle);
   
     /* add class 'active' to the correct article */
-  
-  
+  targetArticle.classList.add('active');
+  console.log('clickedElement (with plus): ' + targetArticle)
   
 }
   
