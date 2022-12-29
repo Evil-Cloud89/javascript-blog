@@ -10,36 +10,36 @@ const titleClickHandler = function(event){
   console.log('Link was clicked!');
   console.log(event);
   
-    /* remove class 'active' from all article links  */
+  /*remove class 'active' from all article links*/
   const activeLinks = document.querySelectorAll('.titles a.active');
 
   for(let activeLink of activeLinks){
-      activeLink.classList.remove('active');
+    activeLink.classList.remove('active');
   }
-    /* add class 'active' to the clicked link */
+  /*add class 'active' to the clicked link*/
   clickedElement.classList.add('active');
   
-  console.log('clickedElement (with plus): ' + clickedElement)
+  console.log('clickedElement (with plus): ' + clickedElement);
 
-    /* remove class 'active' from all articles */
+  /*remove class 'active' from all articles*/
   const activeArticles = document.querySelectorAll('.post');
 
   for(let activeArticle of activeArticles){
-      activeArticle.classList.remove('active');
+    activeArticle.classList.remove('active');
   }
-    /* get 'href' attribute from the clicked link */
+  /*get 'href' attribute from the clicked link*/
   const articleSelector = clickedElement.getAttribute('href');
   console.log(articleSelector);
 
-    /* find the correct article using the selector (value of 'href' attribute) */
+  /*find the correct article using the selector (value of 'href' attribute)*/
   const targetArticle = document.querySelector(articleSelector);
   console.log(targetArticle);
   
-    /* add class 'active' to the correct article */
+  /*add class 'active' to the correct article*/
   targetArticle.classList.add('active');
-  console.log('clickedElement (with plus): ' + targetArticle)
+  console.log('clickedElement (with plus): ' + targetArticle);
   
-}
+};
   
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
@@ -60,11 +60,11 @@ function generateTitleLinks(){
   let html = '';
   
   for(let article of articles) {
-  console.log(article)
+    console.log(article);
   
-  /* get the article id */
-  const articleId = article.getAttribute('id');
-  console.log(articleId);
+    /*get the article id*/
+    const articleId = article.getAttribute('id');
+    console.log(articleId);
 
     /* find the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
@@ -87,8 +87,7 @@ function generateTitleLinks(){
   
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
-}
-
+  }
 
 }
 
