@@ -207,12 +207,15 @@ function generateAuthors(){
 
     // Wrapper dla autorów
     const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    console.log(authorWrapper);
 
     // Tagi dla autorów
     const authorTag = article.getAttribute('data-author');
+    console.log(authorTag);
 
     // Zbudowanie linku
     const authorLink = '<p class="post-author">by <a href="#author-' + authorTag + '">' + authorTag + '</a></p>';
+    console.log(authorLink);
 
     // Dodanie linku z autorem
     authorWrapper.innerHTML=authorLink;
@@ -221,7 +224,11 @@ function generateAuthors(){
 
 generateAuthors();
 
-function authorClickHandler(){
+function authorClickHandler(event){
+
+  // Powstrzymanie eventu
+  event.preventDefault();
+
 
 
 
