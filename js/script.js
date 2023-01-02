@@ -268,10 +268,18 @@ function authorClickHandler(event){
   generateTitleLinks('[data-author="' + author + '"]');
 }
 
-function addClickListenersToAuthors(){
+function addClickListenersToAuthors() {
 
+  /* find all links to authors */
+  const authorLinks = document.querySelectorAll('a[href^="#author-"]');
 
+  /* START LOOP: for each link */
+  for (let authorLink of authorLinks) {
 
+    /* add tagClickHandler as event listener for that link */
+    authorLink.addEventListener('click', authorClickHandler);
+
+    /* END LOOP: for each link */
+  }
 }
-
 addClickListenersToAuthors();
