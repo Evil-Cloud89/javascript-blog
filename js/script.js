@@ -180,12 +180,16 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
+  const allTagsLinks = document.querySelectorAll('.post-tags a');
+  console.log(allTagsLinks);
 
   /* START LOOP: for each link */
+  for(let allTagLink of allTagsLinks){
 
     /* add tagClickHandler as event listener for that link */
-
+    allTagLink.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
+  }
 }
 
 addClickListenersToTags();
