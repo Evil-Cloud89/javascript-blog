@@ -122,3 +122,30 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/* Cloud of Tags */
+
+.list.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.list.tags {
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.list.tags .tag-size-1 {
+  color: orange;
+  font-size: 14px;
+}
+
+.list.tags .tag-size-3 {
+  color: blue;
+  font-size: 16px;
+}
+
+.list.tags .tag-size-5 {
+  color: red;
+  font-size: 18px;
+}
