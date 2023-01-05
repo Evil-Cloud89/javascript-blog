@@ -46,7 +46,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post .post-author',
-  optTagsListSelector = '.tags.list';
+  optTagsListSelector = '.tags.list',
+  optCloudClassCount = 5,
+  optCloudClassPrefix  = 'tag-size-';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -96,6 +98,30 @@ function generateTitleLinks(customSelector = ''){
 }
 
 generateTitleLinks();
+
+function calculateTagsParams(tags) {
+
+  const params = {
+    max: 0,
+    min: 999999
+  };
+
+  console.log(params);
+
+  for (let tag in tags) {
+    if(tags[tag] > params.max) {
+      params.max = tags[tag];
+    }
+
+    if(tags[tag] < params.min) {
+      params.min = tags[tag];
+    }
+  }
+  return params;
+
+}
+
+calculateTagsParams();
 
 function generateTags(){
 
@@ -157,6 +183,9 @@ function generateTags(){
   const tagList = document.querySelector(optTagsListSelector);
   console.log(tagList);
 
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
+
   /* [NEW] create variable for all links HTML code */
   let allTagsHTML = '';
 
@@ -164,8 +193,8 @@ function generateTags(){
   for(let tag in allTags){
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ') ' + '</a></li>';
-
+    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ') ' + '</a></li>';
+    console.log(allTagsHTML);
     /* [NEW] END LOOP: for each tag in allTags: */
   }
 
@@ -175,6 +204,21 @@ function generateTags(){
 }
 
 generateTags();
+
+function calculateTagClass(count, params) {
+  console.log(count, params);
+
+  const normalizedCount = count - params.min;
+
+  const normalizedMax = params.max - params.min;
+
+  const percantage = normalizedCount / normalizedMax;
+
+  const classNumber = Math.floor( percantage * (optCloudClassCount - 1) + 1);
+
+  return classNumber;
+
+}
 
 function tagClickHandler(event){
   /* prevent default action for this event */
